@@ -1,3 +1,3 @@
 # chessAI
 
-# Chess program
+# CHESS program
