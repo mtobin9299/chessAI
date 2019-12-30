@@ -49,7 +49,9 @@ def play_random_data_game():
 
 def generate_random_population(num_of_games):
     training_data = []
-    for _ in range(num_of_games):
+    for i in range(num_of_games):
+        if i % (num_of_games/10) == 0:
+            print(str(i/num_of_games*100) + "%")
         game_data, winner = play_random_data_game()
         for data in game_data:
             board_state = data[0]
@@ -88,6 +90,6 @@ def main(num_of_games=100000, model=None):
         if not os.path.exists("training_data"): os.mkdir("training_data")
         filename = 'cf_training_data-' + date_time + '.npy'
         np.save('training_data\\' + filename, training_data_save)
-        print(training_data_save.size)
+        print("Done! Number of Instances:" + str(training_data_save.size))
 
-main(100)
+main()
