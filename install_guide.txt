@@ -1,2 +1,3 @@
 conda install tensorflow-gpu
 python -m pip install -U pygame
+python -m pip install -U tflearn

@@ -1,4 +1,3 @@
-#connectfourlogic
 import chip
 from chip import *
 from random import randrange
@@ -7,6 +6,7 @@ class ConnectFour:
     def __init__(self):
         self.board = [[Chip('.') for c in range(7)] for r in range(6)]
 
+    #determines if coordinates are within the board
     def isValid(self,row,col):
         if(row>=0 and col>=0):
             if(row<6 and col<7):
@@ -35,10 +35,9 @@ class ConnectFour:
         for slot in range(len(self.board[0])):
             if(self.board[0][slot].team=='.'):
                 lst.append(slot)
-        #print("possible moves: ",lst)
         return lst
 
-    #checks most recent placement of a chip in the 8 directions for a win.
+    #checks most recent placement of a chip to see if it won the game
     #returns a tuple of (True,spots) if a team won and (False,[]) if not
     def checkForWin(self,chip):    
         t = chip.team      
@@ -46,7 +45,7 @@ class ConnectFour:
         spots = []
         spots.append(chip)
 
-        #top&bottom  
+        #checking top & bottom  
         r = chip.row
         c = chip.col      
         count = 1
@@ -66,7 +65,7 @@ class ConnectFour:
         if(count>=4):
             return (True,spots)
 
-        #left&right
+        #checking left & right
         count = 1
         del spots[1:]
         r = chip.row
@@ -88,7 +87,7 @@ class ConnectFour:
             return (True,spots)
         
 
-        #TopLeft&BotRight
+        #checking TopLeft & BotRight
         count = 1
         del spots[1:]
         r = chip.row
@@ -109,7 +108,7 @@ class ConnectFour:
         if(count>=4):
             return (True,spots)
 
-        #TopRight&BotLeft
+        #checking TopRight & BotLeft
         count = 1
         del spots[1:]
         r = chip.row
@@ -132,15 +131,14 @@ class ConnectFour:
         
         return (False,[])
 
+#generates a random slot from 0-6 accounting for filled slots
+#returns -1 if the whole board is filled
 def chooseRandSlot(cf,team):
-    '''
-    s = input()
-    return int(s)
-    '''
     lst = cf.getPossibleMoves()
     if len(lst)==0:
         return -1
     return lst[randrange(len(lst))]
+
 
 def printSpotPositions(spots):
     for spot in spots:

@@ -1,5 +1,5 @@
 import chip
-import cfl
+import cfLogic
 import os
 import numpy as np 
 import project_utilities
@@ -10,7 +10,7 @@ from chip import *
 def play_random_turn(cf, team):
     tie = False
     while True:
-        slot = cfl.chooseRandSlot(cf,team)
+        slot = cfLogic.chooseRandSlot(cf,team)
         if slot == -1: #board is full
             game_over = True
             tie = True
@@ -22,7 +22,7 @@ def play_random_turn(cf, team):
     return cf, slot, game_over, tie
 
 def play_random_data_game():
-    cf = cfl.ConnectFour()
+    cf = cfLogic.ConnectFour()
     game_over = False
     tie = False
     red_data = []
