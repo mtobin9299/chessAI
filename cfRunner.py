@@ -1,5 +1,5 @@
 import chip
-import cfl
+import cfLogic
 
 from chip import *
 
@@ -7,7 +7,7 @@ allWinningLocations = [[0 for c in range(7)] for r in range(6)]
 
 for i in range(100000):
 
-    cf = cfl.ConnectFour()
+    cf = cfLogic.ConnectFour()
 
     #cf.printBoard()
     cf.getPossibleMoves()
@@ -20,7 +20,7 @@ for i in range(100000):
     while not gameOver:
         while(flag):
             #print("Red Turn")
-            slot = cfl.chooseRandSlot(cf,'R')
+            slot = cfLogic.chooseRandSlot(cf,'R')
             if slot == -1: #board is full
                 gameOver = True
                 winningSpots = []
@@ -39,7 +39,7 @@ for i in range(100000):
         flag = True
         while(flag and not gameOver):
             #print("Yellow Turn")
-            slot = cfl.chooseRandSlot(cf,'Y')
+            slot = cfLogic.chooseRandSlot(cf,'Y')
             if slot == -1: #board is full
                 gameOver = True
                 winningSpots = []
