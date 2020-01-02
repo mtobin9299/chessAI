@@ -2,6 +2,7 @@ import chip
 import cfl
 import os
 import numpy as np 
+import project_utilities
 from datetime import datetime
 
 from chip import *
@@ -68,19 +69,9 @@ def prep_training_data(training_data):
         one_hot_slot = data[1]
         winner = data[2]
 
-        mod_board_state = []
-        for row in board_state:
-            mod_row = []
-            for chip in row:
-                #0 = empty space; 1 = player space; 2 = opponent space
-                if chip.team == winner: mod_row.append(1)
-                elif chip.team == '.': mod_row.append(0)
-                else: mod_row.append(2)
-            mod_board_state.append(mod_row)
+        mod_board_state = project_utilities.convert_board(board_state, winner)
         mod_training_data.append([mod_board_state, one_hot_slot])
-    return mod_training_data
-
-        
+    return mod_training_data        
 
 def main(num_of_games=100000, model=None):
     if model is None:
