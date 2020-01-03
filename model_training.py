@@ -23,6 +23,6 @@ def train_model(training_data, model=None):
                run_id=MODEL_NAME)
     return model
 
-training_data = np.load('training_data\\' + TRAINING_DATA_FILE)
+training_data = np.load('training_data\\' + TRAINING_DATA_FILE, allow_pickle=True)
 model = train_model(training_data)
 model.save(MODEL_NAME)
