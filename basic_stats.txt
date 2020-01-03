@@ -1,0 +1,4 @@
+Total games per match up: 50000
+basic1
+Vs. version 1 | Win Rate: 0.50356 | Avg Moves: 8.473111446500914 |
+Vs. version 0 | Win Rate: 0.80658 | Avg Moves: 6.320265813682462 |
