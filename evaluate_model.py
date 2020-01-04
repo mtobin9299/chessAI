@@ -83,10 +83,12 @@ def evaluate(name, test_version, num_of_games):
     for version in range(test_version, -1, -1):
         print("Version " + str(test_version) + " vs. " + str(version))
         opponent_name = name + str(version)
-        if version != 0:
-            # opponent_model = network_module.neural_network_model(42, 7, project_utilities.LEARNING_RATE)
-            # opponent_model.load(opponent_name, weights_only=True)
+        if version == test_version:
             opponent_model = main_model
+        elif version != 0:
+           # opponent_model = network_module.neural_network_model(42, 7, project_utilities.LEARNING_RATE)
+           # opponent_model.load(opponent_name, weights_only=True)
+           continue
         else:
             opponent_model = None
         num_of_wins = 0
@@ -116,7 +118,7 @@ def main(model_name, version, num_of_games=50000):
         print("Vs. version " + str(version) + " | Win Rate: " + str(win_rate) + " | Avg Moves: " + str(moves) + " |")
 
 
-main('basic', 1)
+main('basic', 3)
 
 
 

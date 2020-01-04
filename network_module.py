@@ -24,5 +24,4 @@ def neural_network_model(input_size, output_size, lr):
     network = regression(network, optimizer='adam', learning_rate=lr,
                         loss = 'categorical_crossentropy', name='targets')
     model = tflearn.DNN(network, tensorboard_dir='log')
-
     return model
